@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,17 @@ public class RightController : BaseControl
 
     [SerializeField] private Transform rotateContainer;
 
+    public static RightController control;
+    public Action buttonClick;
+
+    private void Start()
+    {
+        control = this;
+    }
+
     public override void OnButtonADown()
     {
-        Debug.Log("Button A Down");
+        buttonClick.Invoke();
     }
 
     public override void OnButtonBDown()
