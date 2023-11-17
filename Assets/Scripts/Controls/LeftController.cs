@@ -34,40 +34,28 @@ public class LeftController : BaseControl
 
     private void Movement(Vector2 input)
     {
-        float runningX = 1f;
-        float runningY = 1f;
         float directionX = 0f;
         float directionY = 0f;
 
-        if (input.x > 0f)
+        if (input.x > 0.3f)
         {
             directionX = 1f;
-        } else if (input.x < 0f)
+        } else if (input.x < -0.3f)
         {
             directionX = -1f;
         }
 
-        if (Mathf.Abs(input.x) > 0.8f)
-        {
-            runningX = 2f;
-        }
-
-        if (input.y > 0f)
+        if (input.y > 0.3f)
         {
             directionY = 1f;
         }
-        else if (input.y < 0f)
+        else if (input.y < -0.3f)
         {
             directionY = -1f;
         }
 
-        if (Mathf.Abs(input.y) > 0.8f)
-        {
-            runningY = 2f;
-        }
-
-        Vector3 moveX = cameraRef.transform.right * directionX * (moveSpeed * 10f * runningX);
-        Vector3 moveY = cameraRef.transform.forward * directionY * (moveSpeed * 10f * runningY);
+        Vector3 moveX = cameraRef.transform.right * directionX * (moveSpeed * 10f);
+        Vector3 moveY = cameraRef.transform.forward * directionY * (moveSpeed * 10f);
 
         Vector3 moveFinal = moveContainer.transform.position + moveX + moveY;
         moveFinal.y = moveContainer.transform.position.y;

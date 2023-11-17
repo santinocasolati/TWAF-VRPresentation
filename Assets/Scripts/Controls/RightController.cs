@@ -12,6 +12,7 @@ public class RightController : BaseControl
 
     public static RightController control;
     public Action buttonClick;
+    public Action closeUI;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class RightController : BaseControl
 
     public override void OnButtonBDown()
     {
-        Debug.Log("Button B Down");
+        closeUI.Invoke();
     }
 
     public override void OnGripPressed()
